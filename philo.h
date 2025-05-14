@@ -7,6 +7,16 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+typedef struct s_data
+{
+	int	nb_philo;
+	int	life_time;
+	int eat_time;
+	int	sleep_time;
+} t_data;
+
+/*       parsing       */
+int		parsing(char **av);
 
 /*         utils          */
 size_t	ft_strlen(const char *str);

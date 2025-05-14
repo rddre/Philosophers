@@ -1,7 +1,9 @@
 NAME = push_swap
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-SRC = src/philosophers.c
+SRC = src/philosophers.c\
+		src/parsing/parsing.c\
+		utils/print.c
 OBJ = $(SRC:.c=.o)
 
 # Règles

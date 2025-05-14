@@ -30,3 +30,9 @@ int	print_action(int nb, char *s)
     ft_putnbr(nb);
 	return (write(1, s, ft_strlen(s)));
 }
+
+int	print_exit(char *s)
+{
+	print(s);
+	exit(1);
+}

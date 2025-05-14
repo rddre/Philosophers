@@ -1,4 +1,4 @@
-#include "../push_swap.h"
+#include "../philo.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -31,7 +31,7 @@ int	print_action(int nb, char *s)
 	return (write(1, s, ft_strlen(s)));
 }
 
-int	print_exit(char *s)
+void	print_exit(char *s)
 {
 	print(s);
 	exit(1);

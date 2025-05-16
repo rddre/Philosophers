@@ -22,9 +22,10 @@ int	main(int nb_arg, char **av)
 	t_data data;
 
 	if (nb_arg != 5 && nb_arg != 6)
-		return (print("Erreur : mauvais nombre d'argument"), 1);
+		return (print("Erreur : mauvais nombre d'argument\n"), 1);
 
-	parsing(av);
+	parsing( nb_arg, av);
+
 	init_data(&data, av, nb_arg);
 
 	print_action(data.nb_philo, " le nombre de philosopher\n");
@@ -32,6 +33,5 @@ int	main(int nb_arg, char **av)
 	print_action(data.eat_time, " temp qu'il leur faut pour manger\n");
 	print_action(data.sleep_time, " temps qu'il faut pour dormir\n");
 	print_action(data.must_eat, " le nombre de repas qu'il doivent prendre\n");
-
 	return (1);
 }

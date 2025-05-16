@@ -19,7 +19,7 @@ typedef struct s_data
 } t_data;
 
 /*       parsing       */
-int		parsing(char **av);
+int		parsing(int nb_arg, char **av);
 
 /*         utils          */
 size_t	ft_strlen(const char *str);

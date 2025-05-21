@@ -16,7 +16,25 @@ typedef struct s_data
 	int	sleep_time;
 
 	int must_eat;
+
+	pthread_mutex_t	*forks;
 } t_data;
+
+typedef struct s_philo
+{
+	int         id;
+	int         meals_eaten;
+	long long   last_meal_time;
+	pthread_t   thread;
+
+	pthread_mutex_t *left_fork;
+	pthread_mutex_t *right_fork;
+
+	t_data      *data;
+}	t_philo;
+
+/*      philo et routine     */
+int	philo(t_data *data);
 
 /*       parsing       */
 int		parsing(int nb_arg, char **av);

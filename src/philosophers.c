@@ -28,10 +28,13 @@ int	main(int nb_arg, char **av)
 
 	init_data(&data, av, nb_arg);
 
+	philo(&data);
+
+	/*
 	print_action(data.nb_philo, " le nombre de philosopher\n");
 	print_action(data.life_time, " dure de vie des philosopher\n");
 	print_action(data.eat_time, " temp qu'il leur faut pour manger\n");
 	print_action(data.sleep_time, " temps qu'il faut pour dormir\n");
-	print_action(data.must_eat, " le nombre de repas qu'il doivent prendre\n");
+	print_action(data.must_eat, " le nombre de repas qu'il doivent prendre\n");*/
 	return (1);
 }

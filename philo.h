@@ -18,6 +18,10 @@ typedef struct s_data
 	int must_eat;
 
 	pthread_mutex_t	*forks;
+
+	long long time;
+	int dead;
+	pthread_mutex_t death_mutex;
 } t_data;
 
 typedef struct s_philo
@@ -34,7 +38,8 @@ typedef struct s_philo
 }	t_philo;
 
 /*      philo et routine     */
-int	philo(t_data *data);
+void	philo(t_data *data);
+long long timestamp_ms(long long time);
 
 /*       parsing       */
 int		parsing(int nb_arg, char **av);
@@ -46,5 +51,8 @@ void	ft_putnbr(int n);
 int		print_action(int nb, char *s);
 void	print_exit(char *s);
 int		ft_atoi(const char *str);
+
+/*            exit           */
+void	exit_free(t_data *data, t_philo *philos, int code);
 
 #endif

@@ -4,8 +4,17 @@
 
 #include "../philo.h"
 
+long long timestamp_ms(long long time)
+{
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * 1000LL) + (tv.tv_usec / 1000) - time);
+}
+
 void	init_data(t_data *data, char **av, int nb_arg)
 {
+	int	i;
+
 	data->nb_philo = ft_atoi(av[1]);
 	data->life_time = ft_atoi(av[2]);
 	data->eat_time = ft_atoi(av[3]);
@@ -15,6 +24,22 @@ void	init_data(t_data *data, char **av, int nb_arg)
 		data->must_eat = ft_atoi(av[5]);
 	else
 		data->must_eat = -1;
+
+	data->time = timestamp_ms(0);
+	data->dead = 0;
+
+	// Init du mutex de mort
+	pthread_mutex_init(&data->death_mutex, NULL);
+
+	// Allocation des forks
+	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_philo);
+	if (!data->forks)
+		return;
+
+	// Init des forks (un mutex par fork)
+	i = 0;
+	while (i < data->nb_philo)
+		pthread_mutex_init(&data->forks[i++], NULL);
 }
 
 int	main(int nb_arg, char **av)
@@ -29,12 +54,6 @@ int	main(int nb_arg, char **av)
 	init_data(&data, av, nb_arg);
 
 	philo(&data);
-
-	/*
-	print_action(data.nb_philo, " le nombre de philosopher\n");
-	print_action(data.life_time, " dure de vie des philosopher\n");
-	print_action(data.eat_time, " temp qu'il leur faut pour manger\n");
-	print_action(data.sleep_time, " temps qu'il faut pour dormir\n");
-	print_action(data.must_eat, " le nombre de repas qu'il doivent prendre\n");*/
+	
 	return (1);
 }

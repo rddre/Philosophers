@@ -40,6 +40,7 @@ void	init_data(t_data *data, char **av, int nb_arg)
 	i = 0;
 	while (i < data->nb_philo)
 		pthread_mutex_init(&data->forks[i++], NULL);
+	data->fini = 0;
 }
 
 int	main(int nb_arg, char **av)

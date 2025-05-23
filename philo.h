@@ -22,6 +22,8 @@ typedef struct s_data
 	long long time;
 	int dead;
 	pthread_mutex_t death_mutex;
+
+	int fini;
 } t_data;
 
 typedef struct s_philo
@@ -39,6 +41,8 @@ typedef struct s_philo
 
 /*      philo et routine     */
 void	philo(t_data *data);
+void	*routine(void *arg);
+void *monitoring(void *arg);
 long long timestamp_ms(long long time);
 
 /*       parsing       */

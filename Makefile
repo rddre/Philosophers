@@ -3,7 +3,8 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 SRC = src/philosophers.c\
 		src/parsing/parsing.c src/exit/free_exit.c\
-		src/philo_routine/philo.c\
+		src/philo_routine/philo.c src/philo_routine/routine.c\
+		src/philo_routine/monitoring.c\
 		utils/print.c utils/utils.c
 OBJ = $(SRC:.c=.o)
 
